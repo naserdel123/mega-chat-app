@@ -1,0 +1,231 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "أحمد محمد",
+      "username": "ahmed_m",
+      "email": "ahmed@example.com",
+      "phone": "+966501234567",
+      "avatar": "https://i.pravatar.cc/150?img=11",
+      "status": "online",
+      "bio": "مطور تطبيقات | محب للتقنية",
+      "lastSeen": "الآن",
+      "verified": true,
+      "contacts": [2, 3, 4, 5],
+      "blocked": [],
+      "settings": {
+        "notifications": true,
+        "sound": true,
+        "privacy": "contacts_only"
+      }
+    },
+    {
+      "id": 2,
+      "name": "سارة أحمد",
+      "username": "sarah_a",
+      "email": "sarah@example.com",
+      "phone": "+966502345678",
+      "avatar": "https://i.pravatar.cc/150?img=5",
+      "status": "online",
+      "bio": "مصممة جرافيك | فنانة",
+      "lastSeen": "الآن",
+      "verified": false,
+      "contacts": [1, 3, 4],
+      "blocked": [],
+      "settings": {
+        "notifications": true,
+        "sound": true,
+        "privacy": "everyone"
+      }
+    },
+    {
+      "id": 3,
+      "name": "محمد علي",
+      "username": "mohammed_a",
+      "email": "mohammed@example.com",
+      "phone": "+966503456789",
+      "avatar": "https://i.pravatar.cc/150?img=3",
+      "status": "away",
+      "bio": "مهندس برمجيات | مطور Full Stack",
+      "lastSeen": "منذ 5 دقائق",
+      "verified": true,
+      "contacts": [1, 2, 5],
+      "blocked": [],
+      "settings": {
+        "notifications": true,
+        "sound": false,
+        "privacy": "contacts_only"
+      }
+    },
+    {
+      "id": 4,
+      "name": "فاطمة حسن",
+      "username": "fatima_h",
+      "email": "fatima@example.com",
+      "phone": "+966504567890",
+      "avatar": "https://i.pravatar.cc/150?img=9",
+      "status": "offline",
+      "bio": "طبيبة | محبة للسفر",
+      "lastSeen": "منذ ساعة",
+      "verified": false,
+      "contacts": [1, 2],
+      "blocked": [],
+      "settings": {
+        "notifications": false,
+        "sound": true,
+        "privacy": "nobody"
+      }
+    },
+    {
+      "id": 5,
+      "name": "خالد عمر",
+      "username": "khaled_o",
+      "email": "khaled@example.com",
+      "phone": "+966505678901",
+      "avatar": "https://i.pravatar.cc/150?img=12",
+      "status": "online",
+      "bio": "مدير مشاريع | رياضي",
+      "lastSeen": "الآن",
+      "verified": true,
+      "contacts": [1, 3],
+      "blocked": [],
+      "settings": {
+        "notifications": true,
+        "sound": true,
+        "privacy": "everyone"
+      }
+    }
+  ],
+  "groups": [
+    {
+      "id": 101,
+      "name": "فريق التطوير",
+      "avatar": "https://i.pravatar.cc/150?img=8",
+      "description": "فريق تطوير تطبيق MegaChat",
+      "members": [1, 2, 3, 4],
+      "admins": [1, 3],
+      "createdBy": 1,
+      "createdAt": "2023-01-15T10:00:00Z",
+      "type": "work"
+    },
+    {
+      "id": 102,
+      "name": "عائلة",
+      "avatar": "https://i.pravatar.cc/150?img=15",
+      "description": "مجموعة العائلة",
+      "members": [1, 2, 4],
+      "admins": [1],
+      "createdBy": 1,
+      "createdAt": "2023-02-20T14:30:00Z",
+      "type": "family"
+    }
+  ],
+  "conversations": [
+    {
+      "id": 1,
+      "type": "private",
+      "participants": [1, 2],
+      "createdAt": "2023-01-01T00:00:00Z",
+      "lastMessage": {
+        "id": 1001,
+        "senderId": 2,
+        "content": "تمام، بشوفك بكرة إن شاء الله",
+        "timestamp": "2024-01-15T10:30:00Z",
+        "status": "read"
+      },
+      "unreadCount": 0,
+      "isPinned": true,
+      "isMuted": false
+    },
+    {
+      "id": 2,
+      "type": "private",
+      "participants": [1, 3],
+      "createdAt": "2023-01-05T00:00:00Z",
+      "lastMessage": {
+        "id": 1002,
+        "senderId": 3,
+        "content": "أرسلت لك الملفات",
+        "timestamp": "2024-01-15T09:15:00Z",
+        "status": "read"
+      },
+      "unreadCount": 0,
+      "isPinned": false,
+      "isMuted": false
+    },
+    {
+      "id": 3,
+      "type": "group",
+      "groupId": 101,
+      "participants": [1, 2, 3, 4],
+      "createdAt": "2023-01-15T10:00:00Z",
+      "lastMessage": {
+        "id": 1003,
+        "senderId": 3,
+        "content": "تم رفع التحديث الجديد",
+        "timestamp": "2024-01-15T11:00:00Z",
+        "status": "delivered"
+      },
+      "unreadCount": 12,
+      "isPinned": true,
+      "isMuted": false
+    }
+  ],
+  "messages": [
+    {
+      "id": 1001,
+      "conversationId": 1,
+      "senderId": 1,
+      "type": "text",
+      "content": "مرحبا سارة، كيف حالك؟",
+      "timestamp": "2024-01-15T10:25:00Z",
+      "status": "read",
+      "edited": false,
+      "replyTo": null
+    },
+    {
+      "id": 1002,
+      "conversationId": 1,
+      "senderId": 2,
+      "type": "text",
+      "content": "أنا بخير الحمد لله، وأنت؟",
+      "timestamp": "2024-01-15T10:26:00Z",
+      "status": "read",
+      "edited": false,
+      "replyTo": null
+    },
+    {
+      "id": 1003,
+      "conversationId": 1,
+      "senderId": 1,
+      "type": "text",
+      "content": "تمام، هل انتهيت من المشروع؟",
+      "timestamp": "2024-01-15T10:28:00Z",
+      "status": "read",
+      "edited": false,
+      "replyTo": null
+    },
+    {
+      "id": 1004,
+      "conversationId": 1,
+      "senderId": 2,
+      "type": "text",
+      "content": "almost، باقي شوية تعديلات بسيطة",
+      "timestamp": "2024-01-15T10:29:00Z",
+      "status": "read",
+      "edited": false,
+      "replyTo": null
+    },
+    {
+      "id": 1005,
+      "conversationId": 1,
+      "senderId": 2,
+      "type": "text",
+      "content": "تمام، بشوفك بكرة إن شاء الله",
+      "timestamp": "2024-01-15T10:30:00Z",
+      "status": "read",
+      "edited": false,
+      "replyTo": null
+    }
+  ]
+}
