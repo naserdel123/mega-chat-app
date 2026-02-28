@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الملف الشخصي - MegaChat Pro</title>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        .profile-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        .profile-header {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+            border-radius: 24px;
+            padding: 48px;
+            text-align: center;
+            position: relative;
+            margin-bottom: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .profile-avatar-large {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            margin: 0 auto 16px;
+        }
+
+        .profile-avatar-large img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .avatar-edit {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: 3px solid #1a1a2e;
+            transition: transform 0.3s ease;
+        }
+
+        .avatar-edit:hover {
+            transform: scale(1.1);
+        }
+
+        .profile-name {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .profile-status {
+            color: #4ade80;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .profile-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            background: rgba(26, 26, 46, 0.8);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea, #f093fb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: #a0a0b0;
+            font-size: 14px;
+        }
+
+        .profile-section {
+            background: rgba(26, 26, 46, 0.8);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title i {
+            color: #667eea;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            color: #a0a0b0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .info-value {
+            font-weight: 500;
+        }
+
+        .edit-btn {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 13px;
+            transition: all 0.3s ease;
+        }
+
+        .edit-btn:hover {
+            background: rgba(102, 126, 234, 0.2);
+        }
+
+        .back-btn {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            width: 48px;
+            height: 48px;
+            background: rgba(26, 26, 46, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .back-btn:hover {
+            background: #667eea;
+            transform: translateX(-5px);
+        }
+
+        .story-highlights {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            padding-bottom: 16px;
+        }
+
+        .story-add, .story-item {
+            flex-shrink: 0;
+            width: 72px;
+            text-align: center;
+        }
+
+        .story-circle {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #f093fb);
+            padding: 3px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .story-circle:hover {
+            transform: scale(1.05);
+        }
+
+        .story-circle.inner {
+            background: #1a1a2e;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid transparent;
+        }
+
+        .story-add .story-circle.inner {
+            font-size: 24px;
+            color: #667eea;
+        }
+
+        .story-item img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .story-label {
+            font-size: 12px;
+            margin-top: 8px;
+            color: #a0a0b0;
+        }
+    </style>
+</head>
+<body>
+    <button class="back-btn" onclick="window.location.href='index.html'">
+        <i class="fas fa-arrow-right"></i>
+    </button>
+
+    <div class="profile-container">
+        <div class="profile-header">
+            <div class="profile-avatar-large">
+                <img src="https://i.pravatar.cc/150?img=11" alt="Profile" id="profileAvatar">
+                <div class="avatar-edit" onclick="changeAvatar()">
+                    <i class="fas fa-camera"></i>
+                </div>
+            </div>
+            <h1 class="profile-name" id="profileName">أحمد محمد</h1>
+            <div class="profile-status">
+                <span class="status-dot" style="width: 8px; height: 8px; background: #4ade80; border-radius: 50%;"></span>
+                <span id="profileStatus">متصل الآن</span>
+            </div>
+        </div>
+
+        <div class="profile-stats">
+            <div class="stat-card">
+                <div class="stat-value" id="statMessages">1,234</div>
+                <div class="stat-label">رسالة</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="statContacts">567</div>
+                <div class="stat-label">جهة اتصال</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="statGroups">23</div>
+                <div class="stat-label">مجموعة</div>
+            </div>
+        </div>
+
+        <div class="profile-section">
+            <h3 class="section-title">
+                <i class="fas fa-book-open"></i>
+                القصص المميزة
+            </h3>
+            <div class="story-highlights">
+                <div class="story-add">
+                    <div class="story-circle">
+                        <div class="story-circle inner">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                    </div>
+                    <div class="story-label">إضافة</div>
+                </div>
+                <div class="story-item">
+                    <div class="story-circle">
+                        <div class="story-circle inner">
+                            <img src="https://picsum.photos/100/100?random=1" alt="Story">
+                        </div>
+                    </div>
+                    <div class="story-label">السفر</div>
+                </div>
+                <div class="story-item">
+                    <div class="story-circle">
+                        <div class="story-circle inner">
+                            <img src="https://picsum.photos/100/100?random=2" alt="Story">
+                        </div>
+                    </div>
+                    <div class="story-label">العمل</div>
+                </div>
+                <div class="story-item">
+                    <div class="story-circle">
+                        <div class="story-circle inner">
+                            <img src="https://picsum.photos/100/100?random=3" alt="Story">
+                        </div>
+                    </div>
+                    <div class="story-label">عائلة</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-section">
+            <h3 class="section-title">
+                <i class="fas fa-user"></i>
+                المعلومات الشخصية
+            </h3>
+            <div class="info-row">
+                <div class="info-label">
+                    <i class="fas fa-phone"></i>
+                    رقم الهاتف
+                </div>
+                <div class="info-value" id="profilePhone">+966 50 123 4567</div>
+                <button class="edit-btn">تعديل</button>
+            </div>
+            <div class="info-row">
+                <div class="info-label">
+                    <i class="fas fa-envelope"></i>
+                    البريد الإلكتروني
+                </div>
+                <div class="info-value" id="profileEmail">ahmed@email.com</div>
+                <button class="edit-btn">تعديل</button>
+            </div>
+            <div class="info-row">
+                <div class="info-label">
+                    <i class="fas fa-map-marker-alt"></i>
+                    الموقع
+                </div>
+                <div class="info-value" id="profileLocation">الرياض، السعودية</div>
+                <button class="edit-btn">تعديل</button>
+            </div>
+            <div class="info-row">
+                <div class="info-label">
+                    <i class="fas fa-birthday-cake"></i>
+                    تاريخ الميلاد
+                </div>
+                <div class="info-value" id="profileBirthday">15 يناير 1995</div>
+                <button class="edit-btn">تعديل</button>
+            </div>
+        </div>
+
+        <div class="profile-section">
+            <h3 class="section-title">
+                <i class="fas fa-shield-alt"></i>
+                الأمان والخصوصية
+            </h3>
+            <div class="info-row">
+                <div class="info-label">
+                    <i class="fas fa-lock"></i>
+                    التحقق بخطوتين
+                </div>
+                <div class="info-value" style="color: #4ade80;">مفعل</div>
+                <button class="edit-btn">إدارة</button>
+            </div>
+            <div class="info-row">
+                <div class="info-label">
+                    <i class="fas fa-eye"></i>
+                    آخر ظهور
+                </div>
+                <div class="info-value">الجميع</div>
+                <button class="edit-btn">تغيير</button>
+            </div>
+            <div class="info-row">
+                <div class="info-label">
+                    <i class="fas fa-image"></i>
+                    صورة الملف الشخصي
+                </div>
+                <div class="info-value">جهات الاتصال فقط</div>
+                <button class="edit-btn">تغيير</button>
+            </div>
+        </div>
+
+        <div class="profile-section">
+            <h3 class="section-title">
+                <i class="fas fa-chart-line"></i>
+                النشاط
+            </h3>
+            <div class="info-row">
+                <div class="info-label">
+                    <i class="fas fa-calendar"></i>
+                    انضم في
+                </div>
+                <div class="info-value">يناير 2023</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">
+                    <i class="fas fa-clock"></i>
+                    آخر نشاط
+                </div>
+                <div class="info-value">منذ دقيقة</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/storage.js"></script>
+    <script>
+        // تحميل بيانات المستخدم
+        const user = StorageManager.getLocal('user');
+        if (user) {
+            document.getElementById('profileName').textContent = user.name;
+            document.getElementById('profileEmail').textContent = user.email;
+            document.getElementById('profileAvatar').src = user.avatar;
+        }
+
+        function changeAvatar() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            input.onchange = (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        document.getElementById('profileAvatar').src = event.target.result;
+                        user.avatar = event.target.result;
+                        StorageManager.setLocal('user', user);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            };
+            input.click();
+        }
+
+        // تحديث الإحصائيات عشوائياً
+        function updateStats() {
+            document.getElementById('statMessages').textContent = 
+                Math.floor(Math.random() * 5000 + 1000).toLocaleString();
+        }
+        
+        setInterval(updateStats, 30000);
+    </script>
+</body>
+</html>
