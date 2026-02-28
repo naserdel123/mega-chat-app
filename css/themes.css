@@ -1,0 +1,184 @@
+/* ==========================================
+   MegaChat Pro - Themes
+   ========================================== */
+
+/* Dark Theme (Default) */
+[data-theme="dark"] {
+    --bg-primary: #0f0f1a;
+    --bg-secondary: #1a1a2e;
+    --bg-tertiary: #252542;
+    --bg-elevated: #2d2d4a;
+    
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0b0;
+    --text-tertiary: #6b7280;
+    
+    --border-color: rgba(255, 255, 255, 0.1);
+    --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Light Theme */
+[data-theme="light"] {
+    --bg-primary: #f0f2f5;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #e4e6eb;
+    --bg-elevated: #ffffff;
+    
+    --text-primary: #050505;
+    --text-secondary: #65676b;
+    --text-tertiary: #8a8d91;
+    
+    --border-color: rgba(0, 0, 0, 0.1);
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    
+    --primary: #0084ff;
+    --primary-light: #00c6ff;
+    --primary-dark: #005bb5;
+}
+
+/* Midnight Theme */
+[data-theme="midnight"] {
+    --bg-primary: #000000;
+    --bg-secondary: #0a0a0a;
+    --bg-tertiary: #141414;
+    --bg-elevated: #1a1a1a;
+    
+    --text-primary: #ffffff;
+    --text-secondary: #888888;
+    --text-tertiary: #555555;
+    
+    --primary: #00ff88;
+    --primary-light: #00ffaa;
+    --primary-dark: #00cc6a;
+    
+    --online: #00ff88;
+    --accent: #ff00ff;
+}
+
+/* Sunset Theme */
+[data-theme="sunset"] {
+    --bg-primary: #1a0b2e;
+    --bg-secondary: #2d1b4e;
+    --bg-tertiary: #432c7a;
+    --bg-elevated: #5a3d9b;
+    
+    --text-primary: #fff5e6;
+    --text-secondary: #ffd699;
+    --text-tertiary: #cc9966;
+    
+    --primary: #ff6b6b;
+    --primary-light: #ff8e8e;
+    --primary-dark: #ee5a5a;
+    
+    --accent: #ffd93d;
+}
+
+/* Ocean Theme */
+[data-theme="ocean"] {
+    --bg-primary: #001f3f;
+    --bg-secondary: #003366;
+    --bg-tertiary: #004080;
+    --bg-elevated: #0055aa;
+    
+    --text-primary: #e6f3ff;
+    --text-secondary: #99ccff;
+    --text-tertiary: #66b3ff;
+    
+    --primary: #00d4ff;
+    --primary-light: #33ddff;
+    --primary-dark: #00a8cc;
+    
+    --accent: #ff6b9d;
+}
+
+/* Forest Theme */
+[data-theme="forest"] {
+    --bg-primary: #0d2818;
+    --bg-secondary: #1a4d2e;
+    --bg-tertiary: #2d6a4f;
+    --bg-elevated: #40916c;
+    
+    --text-primary: #d8f3dc;
+    --text-secondary: #95d5b2;
+    --text-tertiary: #74c69d;
+    
+    --primary: #52b788;
+    --primary-light: #74c69d;
+    --primary-dark: #40916c;
+    
+    --accent: #ffb703;
+}
+
+/* Theme Transitions */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body * {
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Light Theme Specific Overrides */
+[data-theme="light"] .sidebar {
+    border-left-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .chat-header,
+[data-theme="light"] .chat-input-area {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+[data-theme="light"] .message.received {
+    background: #e4e6eb;
+    color: #050505;
+}
+
+[data-theme="light"] .message.sent {
+    background: #0084ff;
+    color: white;
+}
+
+[data-theme="light"] .conversation-item:hover,
+[data-theme="light"] .conversation-item.active {
+    background: #f0f2f5;
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    :root {
+        --border-color: rgba(255, 255, 255, 0.5);
+        --text-secondary: #cccccc;
+    }
+    
+    .message {
+        border: 2px solid transparent;
+    }
+    
+    .btn-icon:focus,
+    button:focus,
+    input:focus,
+    textarea:focus {
+        outline: 3px solid var(--primary);
+        outline-offset: 2px;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .sidebar,
+    .chat-input-area,
+    .btn-icon {
+        display: none !important;
+    }
+    
+    .chat-area {
+        width: 100%;
+        background: white !important;
+        color: black !important;
+    }
+    
+    .message {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+}
